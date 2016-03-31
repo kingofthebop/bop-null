@@ -19,7 +19,14 @@ get_header(); ?>
 		<?php while( have_posts() ): the_post() ?>
 			<article>
 				<header>
-					<?php the_post_thumbnail() ?>
+					<?php the_post_thumbnail('full', array('class' => 'img-fluid')); ?>
+					<?php
+					/**
+					* Uncomment snippet below to add caption to featured image.
+					* Caption content is defined in the media gallery.
+					*/
+					?>
+					<?php //echo get_post(get_post_thumbnail_id())->post_excerpt; ?>
 					<h1><?php the_title() ?></h1>
 				</header>
 				<section>
