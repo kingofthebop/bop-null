@@ -200,3 +200,49 @@ function add_title_to_attachment_image( $attr, $attachment ) {
     $attr['title'] = esc_attr( $attachment->post_title );
     return $attr;
 }
+
+
+// Add logo uploader to theme
+
+add_action( 'customize_register', function( $wp_customize ) {
+	$wp_customize->add_section( 'themeslug_logo_section' , array(
+    'title'       => __( 'Logo', 'themeslug' ),
+    'priority'    => 30,
+    'description' => 'Upload a logo to replace the default site name and description in the header',
+	) );
+
+	$wp_customize->add_setting( 'themeslug_logo' );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_logo', array(
+    'label'    => __( 'Logo', 'themeslug' ),
+    'section'  => 'themeslug_logo_section',
+    'settings' => 'themeslug_logo',
+	) ) );
+
+} );
+
+/* Add dynanmic copyright to footer */
+function bop_copyright() {
+	global $wpdb;
+
+	$copyright_dates = $wpdb->get_results("
+		SELECT
+		YEAR(min(post_date_gmt)) AS firstdate,
+		YEAR(max(post_date_gmt)) AS lastdate
+		FROM
+		$wpdb->posts
+		WHERE
+		post_status = 'publish'
+	");
+
+	$output = '';
+	if($copyright_dates) {
+		$copyright = "&copy; " . $copyright_dates[0]->firstdate . " Bop | All rights reserved";
+		if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
+			$copyright .= '-' . $copyright_dates[0]->lastdate . " Bop | All rights reserved";
+		}
+		$output = $copyright;
+	}
+
+	return $output;
+}
