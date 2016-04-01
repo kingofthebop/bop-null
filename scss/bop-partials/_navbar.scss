@@ -1,12 +1,25 @@
-.navbar-toggler { // Fix navbar toggler to top right    
+.navbar-toggler { // Fix navbar toggler to top right
     border:1px solid $brand-primary;
     border-radius:0;
     color:$brand-primary;
 }
 
 @include media-breakpoint-down(md) { // 767px and down
-    .nav-tabs .nav-item {
+    .navbar-nav .nav-item {
         float: none;
         text-align:center;
+    }
+    .navbar-nav .nav-item + .nav-item {
+        margin-left: 0;
+    }
+
+    .dropdown-menu {
+        position:relative;
+        float:none;
+        text-align:center;
+    }
+
+    .navbar-nav .nav-link + .nav-link {
+        margin-left: 0;
     }
 }

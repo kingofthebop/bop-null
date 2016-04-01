@@ -7115,9 +7115,26 @@ a.bg-danger:focus, a.bg-danger:hover {
 
 @media (max-width: 991px) {
   /* line 8, ../scss/bop-partials/_navbar.scss */
-  .nav-tabs .nav-item {
+  .navbar-nav .nav-item {
     float: none;
     text-align: center;
+  }
+
+  /* line 12, ../scss/bop-partials/_navbar.scss */
+  .navbar-nav .nav-item + .nav-item {
+    margin-left: 0;
+  }
+
+  /* line 16, ../scss/bop-partials/_navbar.scss */
+  .dropdown-menu {
+    position: relative;
+    float: none;
+    text-align: center;
+  }
+
+  /* line 22, ../scss/bop-partials/_navbar.scss */
+  .navbar-nav .nav-link + .nav-link {
+    margin-left: 0;
   }
 }
 
