@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Default Template
+ * 
  *
  * @package Bop Null
  * @since 0.1.0

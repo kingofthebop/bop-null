@@ -19,29 +19,34 @@
 	</head>
 	<body <?php body_class(); ?>>
 		<header>
-			<!-- Add logo -->
-			<?php if ( get_theme_mod( 'themeslug_logo' ) ) : ?>
-				<div class='site-logo'>
-					<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'themeslug_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' class="img-fluid img-logo" width="225" height="52"></a>
-				</div>
-			<?php else : ?>
-				<hgroup>
-					<h1 class='site-title'><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a></h1>
-					<h2 class='site-description'><?php bloginfo( 'description' ); ?></h2>
-				</hgroup>
-			<?php endif; ?>
-			<!--Navbar-->
-			<button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsing-navbar">
-				&#9776;
-			</button>
-			<div class="collapse navbar-toggleable-md" id="collapsing-navbar">
-				<?php has_nav_menu( 'primary' ) && wp_nav_menu( array(
-					'walker'=>new Bop_Nav_Walker,
-					'theme_location'=>'primary',
-					'container'=>'nav',
-					'container_class'=>'navbar',
-					'menu_class'=>'nav nav-tabs'
-				) ) ?>
-			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- Add logo -->
+						<?php if ( get_theme_mod( 'themeslug_logo' ) ) : ?>
+								<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'themeslug_logo' ) ); ?>' class="img-fluid img-logo navbar-brand" alt="logo"></a>
+						<?php else : ?>
+							<hgroup class="navbar-brand">
+								<h1 class='site-title'><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a></h1>
+								<h2 class='site-description'><?php bloginfo( 'description' ); ?></h2>
+							</hgroup>
+						<?php endif; ?>
+					</div><!-- end .col-xs-12 -->
+					<!--Navbar-->
+					<nav class="navbar">
+						<button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsing-navbar">
+							<i class="fa fa-bars"></i>
+						</button>
+						<?php has_nav_menu( 'primary' ) && wp_nav_menu( array(
+							'walker'=>new Bop_Nav_Walker,
+							'theme_location'=>'primary',
+							'container'=>'div',
+							'container_id'=>'collapsing-navbar',
+							'container_class'=>'collapse navbar-toggleable-md',
+							'menu_class'=>'nav navbar-nav'
+						) ) ?>
+					</nav>
+				</div><!-- end .row -->
+			</div><!--end .container-fluid-->
 		</header>
 		<div id="content" class="container-fluid">

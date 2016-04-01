@@ -5,7 +5,9 @@
 
 }
 @include media-breakpoint-up(lg) { // 992px and up
-
+    .navbar-toggleable-md {// Fix the height:0 glitch in toggled navbar
+        //height:auto !important;
+    }
 }
 @include media-breakpoint-up(xl) { // 1200px and up
 

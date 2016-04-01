@@ -1,0 +1,12 @@
+.navbar-toggler { // Fix navbar toggler to top right    
+    border:1px solid $brand-primary;
+    border-radius:0;
+    color:$brand-primary;
+}
+
+@include media-breakpoint-down(md) { // 767px and down
+    .nav-tabs .nav-item {
+        float: none;
+        text-align:center;
+    }
+}
